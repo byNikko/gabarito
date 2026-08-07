@@ -3,92 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imprimir - byNikko</title>
+<title>Imprimir</title>
 <style>
-  /* Estilos para a visualização na tela do celular/computador */
+  /* Remove as margens e centraliza a imagem na tela */
   body {
-    font-family: 'Arial Rounded MT Bold', sans-serif;
-    background-color: #D8D4CE; /* Cor de fundo (tan) da sua marca */
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-color: #FFFFFF;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 100vh;
   }
   
-  .header-info {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #303331;
-  }
-
-  .btn-print {
-    background-color: #FF7A00; /* Laranja da marca */
-    color: #FFFFFF;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 999px;
-    cursor: pointer;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: transform 0.1s ease;
-  }
-
-  .btn-print:active {
-    transform: scale(0.95);
-  }
-
-  .image-container {
-    background: #FFFFFF;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(36,16,25,0.12);
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .image-container img {
+  /* Garante que a imagem caiba na folha na hora de imprimir */
+  img {
     max-width: 100%;
     height: auto;
     display: block;
-  }
-
-  /* Estilos exclusivos para a hora da impressão (Oculta botões e fundo) */
-  @media print {
-    body {
-      background-color: #FFFFFF;
-      padding: 0;
-    }
-    .header-info, .btn-print {
-      display: none; /* Esconde texto e botão no papel */
-    }
-    .image-container {
-      padding: 0;
-      box-shadow: none;
-      border-radius: 0;
-    }
-    .image-container img {
-      width: 100%; /* Garante que a imagem preencha a folha */
-    }
   }
 </style>
 </head>
 <body>
 
-  <div class="header-info">
-    <h2>Catálogo byNikko</h2>
-    <p>Clique no botão abaixo para imprimir a imagem em tamanho real.</p>
-  </div>
+  <!-- COLOQUE O LINK DA SUA IMAGEM AQUI (NO LUGAR DO SUA_IMAGEM.png) -->
+  <img src="Hanging-guide-sea-A4_Prancheta 1.png" alt="Imagem para impressão">
 
-  <!-- Botão que aciona a tela de impressão do navegador -->
-  <button class="btn-print" onclick="window.print()">🖨️ Imprimir Imagem</button>
-
-  <div class="image-container">
-    <!-- COLOQUE O LINK DA SUA IMAGEM AQUI -->
-    <img src="Hanging-guide-sea-A4_Prancheta 1.png" alt="Imagem para impressão byNikko">
-  </div>
+  <script>
+    // Esse é o truque: avisa o navegador para abrir a impressão assim que a imagem carregar!
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 500); // Um pequeno atraso de meio segundo só para garantir que a imagem carregou na tela
+    };
+  </script>
 
 </body>
 </html>
